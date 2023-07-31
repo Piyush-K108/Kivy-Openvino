@@ -1,7 +1,7 @@
 [app]
 
 # (str) Title of your application
-title = My Application
+title = My Application2
 
 # (str) Package name
 package.name = myapp
@@ -13,16 +13,16 @@ package.domain = org.test
 source.dir = .
 
 # (list) Source files to include (let empty to include all the files)
-source.include_exts = py,png,jpg,kv,atlas,xml,bin
+source.include_exts = py,png,jpg,kv,atlas
 
 # (list) List of inclusions using pattern matching
-source.include_patterns =  Application/models/face-detection-adas-0001/*.xml, Application/models/face-detection-adas-0001/*.bin
+#source.include_patterns = assets/*,images/*.png
 
 # (list) Source files to exclude (let empty to not exclude anything)
 #source.exclude_exts = spec
 
 # (list) List of directory to exclude (let empty to not exclude anything)
-#source.exclude_dirs = tests, bin, venv
+source.exclude_dirs = tests, bin, venv
 
 # (list) List of exclusions using pattern matching
 # Do not prefix with './'
@@ -36,8 +36,8 @@ version = 0.1
 # version.filename = %(source.dir)s/main.py
 
 # (list) Application requirements
-# comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy,opencv-python,numpy,openvino
+# comma separated e.g. requirements = sqlite3,kivy,
+requirements = python3,kivy==1.0.7,kivymd==1.1.1,pillow,docutils, Kivy-Garden, pygments
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
@@ -95,20 +95,19 @@ fullscreen = 0
 
 # (list) Permissions
 # (See https://python-for-android.readthedocs.io/en/latest/buildoptions/#build-options-1 for all the supported syntaxes and properties)
-android.permissions = android.permission.INTERNET,android.permission.WRITE_EXTERNAL_STORAGE,android.permission.CAMERA,android.permission.READ_EXTERNAL_STORAGE
-
+android.permissions = CAMERA,INTERNET,READ_EXTERNAL_STORAGE,WRITE_EXTERNAL_STORAGE,READ_SETTINGS,READ_SECURE_SETTINGS
 
 # (list) features (adds uses-feature -tags to manifest)
 #android.features = android.hardware.usb.host
 
 # (int) Target Android API, should be as high as possible.
-#android.api = 31
+android.api = 31
 
 # (int) Minimum API your APK / AAB will support.
 #android.minapi = 21
 
 # (int) Android SDK version to use
-#android.sdk = 20
+android.sdk = 20
 
 # (str) Android NDK version to use
 #android.ndk = 23b
@@ -182,12 +181,12 @@ android.permissions = android.permission.INTERNET,android.permission.WRITE_EXTER
 
 # (list) Android AAR archives to add
 #android.add_aars =
-android.assets = models
+
 # (list) Put these files or directories in the apk assets directory.
 # Either form may be used, and assets need not be in 'source.include_exts'.
 # 1) android.add_assets = source_asset_relative_path
 # 2) android.add_assets = source_asset_path:destination_asset_relative_path
-android.add_assets = Application/models/face-detection-adas-0001/face-detection-adas-0001.bin ,Application/models/face-detection-adas-0001/face-detection-adas-0001.xml
+#android.add_assets =
 
 # (list) Put these files or directories in the apk res directory.
 # The option may be used in three ways, the value may contain one or zero ':'
@@ -284,7 +283,7 @@ android.add_assets = Application/models/face-detection-adas-0001/face-detection-
 
 # (list) The Android archs to build for, choices: armeabi-v7a, arm64-v8a, x86, x86_64
 # In past, was `android.arch` as we weren't supporting builds for multiple archs at the same time.
-android.archs = arm64-v8a, armeabi-v7a
+android.archs = armeabi-v7a
 
 # (int) overrides automatic versionCode computation (used in build.gradle)
 # this is not the same as app version and should only be edited if you know what you're doing
